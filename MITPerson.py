@@ -31,3 +31,12 @@ class UG(Student):
 
 class Grad(Student):
     pass
+
+class TransferStudent(Student):
+    def __init__(self, name, fromSchool):
+        MITPerson.__init__(self, name)
+        self.fromSchool = fromSchool
+    
+    def getOldSchool(self):
+        return self.fromSchool
+        
