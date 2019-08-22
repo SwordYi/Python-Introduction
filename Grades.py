@@ -1,6 +1,6 @@
-from MITPerson import MITPerson
+from MITPerson import *
 
-class Grade(objcet):
+class Grades(object):
     def __init__(self):
         """ 创建一个空的成绩册 """
         self.students = []
@@ -35,3 +35,12 @@ class Grade(objcet):
             self.students.sort()
             self.isSorted = True
         return self.students[:]
+
+    def getStudentsByYield(self):
+        """ 按字母顺序返回成绩册中排号序的成绩列表，
+            使用生成器方式 """
+        if not self.isSorted:
+            self.students.sort()
+            self.isSorted = True
+        for s in self.students:
+            yield s
