@@ -30,3 +30,23 @@ class WeightedEdge(Edge):
     def __str__(self):
         return self.src.getName() + '->(' + str(self.weight) + ')' + self.dest.getName() 
     
+
+class Digraph(object):
+    # nodes是图中节点的列表
+    # edges是一个字典，将每个节点映射到其子节点列表
+    def __init__(self):
+        self.nodes = []
+        self.edges = {}
+    def addNode(self, node):
+        if node in self.nodes:
+            raise ValueError('Duplicate node')
+        else:
+            self.nodes.append(node)
+            self.edges[node] = []
+    def addEdge(self, edge):
+        src = edge.getSource()
+        dest = edge.getDestination()
+        if not (src in self.nodes and dest in self.nodes):
+            raise ValueError('Node not in graph')
+        self.edges[src].append(dest)
+        
